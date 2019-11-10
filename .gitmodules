@@ -1,0 +1,3 @@
+[submodule "CornField-Docs"]
+	path = packages/CornField-Docs
+	url = https://github.com/FubukiNoCornField/CornField-Docs.git
