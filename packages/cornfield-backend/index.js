@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 const ratelimit = require('koa-ratelimit')
 const Redis = require('ioredis')
 const Koa = require('koa')
@@ -12,12 +13,12 @@ process.on('uncaughtException', (err) => {
   console.log('ERR unc expt')
   console.log(err)
 })
-;(async () => {
+;(() => {
   app.use(
     ratelimit({
       db: new Redis(
         6379,
-        process.env.NODE_ENV == 'development'
+        process.env.NODE_ENV === 'development'
           ? '127.0.0.1'
           : process.env.REDIS_IP
       ),
@@ -51,9 +52,9 @@ process.on('uncaughtException', (err) => {
     })
   )
 
-  let api = fs.readdirSync(__dirname + '/api')
+  const api = fs.readdirSync(path.join(__dirname, '/api'))
   api.forEach((element) => {
-    let module = require(__dirname + '/api/' + element)
+    const module = require(path.join(__dirname, '/api/', element))
     router.use(
       '/' + element.replace('.js', ''),
       module.routes(),

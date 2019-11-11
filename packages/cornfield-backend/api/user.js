@@ -1,6 +1,6 @@
 const Router = require('koa-router')
 const user = new Router()
-const log = process.env.NODE_ENV == 'development' ? console.log : () => {}
+// const log = process.env.NODE_ENV === 'development' ? console.log : () => {}
 
 // /user
 user.get('/', async (ctx, next) => {

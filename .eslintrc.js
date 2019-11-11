@@ -10,7 +10,13 @@ module.exports = {
     allowImportExportEverywhere: true,
     ecmaVersion: 2020
   },
-  extends: ['plugin:prettier/recommended'],
+  extends: [
+    '@nuxtjs',
+    'prettier',
+    'prettier/vue',
+    'plugin:prettier/recommended',
+    'plugin:nuxt/recommended'
+  ],
   plugins: ['prettier'],
   // add your custom rules here
   rules: {

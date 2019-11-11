@@ -2,7 +2,7 @@ const MongoClient = require('mongodb').MongoClient
 // DB Init
 
 const client = new MongoClient(
-  process.env.NODE_ENV == 'development'
+  process.env.NODE_ENV === 'development'
     ? 'mongodb://localhost:27017/admin'
     : `mongodb://admin:${process.env.MONGODB_PASS}@${process.env.MONGODB_IP}:27017/admin?authMechanism=DEFAULT`,
   { useNewUrlParser: true, useUnifiedTopology: true }

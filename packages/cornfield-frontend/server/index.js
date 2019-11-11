@@ -31,7 +31,7 @@ async function start() {
     ratelimit({
       db: new Redis(
         6379,
-        process.env.NODE_ENV == 'development'
+        process.env.NODE_ENV === 'development'
           ? '127.0.0.1'
           : process.env.REDIS_IP
       ),
