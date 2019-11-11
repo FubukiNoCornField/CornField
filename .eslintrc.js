@@ -5,15 +5,15 @@ module.exports = {
     node: true
   },
   parserOptions: {
-    // parser: 'babel-eslint'
+    parser: 'babel-eslint',
+    sourceType: 'module',
+    allowImportExportEverywhere: true,
+    ecmaVersion: 2020
   },
   extends: ['plugin:prettier/recommended'],
   plugins: ['prettier'],
   // add your custom rules here
   rules: {
     'prettier/prettier': 'error'
-  },
-  parserOptions: {
-    ecmaVersion: 11
   }
 }

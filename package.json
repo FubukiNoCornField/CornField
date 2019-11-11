@@ -19,6 +19,31 @@
       "pre-commit": "lint-staged"
     }
   },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false
+        }
+      ],
+      "stage-0"
+    ],
+    "env": {
+      "production": {
+        "only": [
+          "app"
+        ],
+        "plugins": []
+      },
+      "test": {
+        "plugins": [
+          "transform-es2015-modules-commonjs",
+          "dynamic-import-node"
+        ]
+      }
+    }
+  },
   "author": "FubukiNoCornField",
   "license": "MIT",
   "bugs": {
@@ -28,6 +53,8 @@
   "dependencies": {
     "@nuxtjs/eslint-config": "^1.1.2",
     "babel-eslint": "^10.0.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^6.0.0",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
