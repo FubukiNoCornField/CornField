@@ -1,4 +1,6 @@
 const Koa = require('koa')
+const ratelimit = require('koa-ratelimit')
+const Redis = require('ioredis')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 
@@ -13,8 +15,8 @@ async function start() {
   const nuxt = new Nuxt(config)
 
   const {
-    host = process.env.HOST || '127.0.0.1',
-    port = process.env.PORT || 3000
+    host = process.env.HOST || '0.0.0.0',
+    port = process.env.PORT || 2170
   } = nuxt.options.server
 
   // Build in development
@@ -24,6 +26,27 @@ async function start() {
   } else {
     await nuxt.ready()
   }
+
+  app.use(
+    ratelimit({
+      db: new Redis(
+        6379,
+        process.env.NODE_ENV == 'development'
+          ? '127.0.0.1'
+          : process.env.REDIS_IP
+      ),
+      duration: 3600000,
+      errorMessage: 'RATE LIMIT',
+      id: (ctx) => ctx.ip,
+      headers: {
+        // remaining: 'Rate-Limit-Remaining',
+        // reset: 'Rate-Limit-Reset',
+        // total: 'Rate-Limit-Total'
+      },
+      max: 2500,
+      disableHeader: true
+    })
+  )
 
   app.use((ctx) => {
     ctx.status = 200

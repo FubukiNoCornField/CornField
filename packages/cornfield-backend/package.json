@@ -12,8 +12,10 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "cross-env": "^6.0.0",
+    "ioredis": "^4.14.1",
     "koa": "^2.8.1",
     "koa-bodyparser": "^4.2.1",
+    "koa-ratelimit": "^4.2.0",
     "koa-router": "^7.4.0",
     "koa-send": "^5.0.0",
     "mongodb": "^3.3.3",
