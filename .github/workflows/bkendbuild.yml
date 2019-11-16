@@ -1,0 +1,21 @@
+name: 'BackEnd Build'
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+env:
+  IMAGE_NAME: node-slim
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: BackEnd Build
+        run: docker build -t afanyiyu/cornfield-backend github.com/FubukiNoCornField/CornField#master:packages/cornfield-backend
+      - name: Log In
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: BackEnd Push
+        run: docker push afanyiyu/cornfield-backend
