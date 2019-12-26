@@ -20,6 +20,8 @@ module.exports = {
   plugins: ['prettier'],
   // add your custom rules here
   rules: {
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    'no-console': 0,
+    'nuxt/no-cjs-in-config': 0
   }
 }

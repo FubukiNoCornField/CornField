@@ -68,3 +68,5 @@ temp/
 *test*.js*
 *dist*.zip
 *node_modules*
+*.nuxt
+*sw.js
