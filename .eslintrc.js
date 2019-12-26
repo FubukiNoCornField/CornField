@@ -22,6 +22,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'no-console': 0,
-    'nuxt/no-cjs-in-config': 0
+    'nuxt/no-cjs-in-config': 0,
+    'vue/attributes-order': 0
   }
 }
