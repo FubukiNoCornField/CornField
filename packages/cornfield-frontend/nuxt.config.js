@@ -1,5 +1,5 @@
 module.exports = {
-  mode: 'universal',
+  mode: 'spa',
   /*
    ** Headers of the page
    */
@@ -27,7 +27,10 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/element-ui'],
+  plugins: [
+    '@/plugins/element-ui',
+    { src: '~/plugins/vuex-persist', ssr: false }
+  ],
   /*
    ** Nuxt.js dev-modules
    */

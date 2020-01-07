@@ -2,11 +2,7 @@
 TODO: 1. Add Vuex to store loginState
 At: https://zh.nuxtjs.org/guide/vuex-store#%E6%99%AE%E9%80%9A%E6%96%B9%E5%BC%8F
 Eg: https://zh.nuxtjs.org/examples/vuex-store
-TODO: 2. Add Middleware to confirm login
-At: https://zh.nuxtjs.org/guide/routing#%E4%B8%AD%E9%97%B4%E4%BB%B6
-Eg: https://zh.nuxtjs.org/examples/auth-routes
-Eg: https://zh.nuxtjs.org/examples/middleware/
-TODO: 3. Adjust parameters
+TODO: 2. Adjust parameters
 At: https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function/rotate3d
 -->
 
@@ -41,6 +37,7 @@ export default {
   head: {
     title: 'Demo'
   },
+  middleware: 'auth',
   data() {
     return {
       b1: false,
@@ -107,7 +104,7 @@ export default {
         this.x *= 0.2
         this.y *= 0.2
       }
-      this.style = `  
+      this.style = `
 -webkit-transform-style: preserve-3d;
 -moz-transform-style: preserve-3d;
 -ms-transform-style: preserve-3d;

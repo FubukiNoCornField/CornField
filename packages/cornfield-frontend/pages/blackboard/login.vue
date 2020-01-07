@@ -39,6 +39,11 @@ export default {
       }
     }
   },
+  computed: {
+    authorized() {
+      return this.$store.state.demo.authorized
+    }
+  },
   methods: {
     validate(rule, value, callback) {
       if (this.form.pass === 'value') {
@@ -52,7 +57,14 @@ export default {
     },
     submitForm() {
       this.$refs.ruleForm.validate((valid) => {
-        if (valid) this.$router.push('/blackboard/demo')
+        if (valid) {
+          this.$store.commit('demo/change', true)
+          console.log(this.authorized)
+          this.$router.push('/blackboard/demo')
+        } else {
+          this.$store.commit('demo/change', false)
+          console.log(this.authorized)
+        }
       })
     }
   }
